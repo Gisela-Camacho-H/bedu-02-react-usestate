@@ -1,28 +1,49 @@
-//IMPORTACIONES
+// ./src/App.js
+
+// 1. IMPORTACIONES
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/Home';
 import Exercise from './components/Exercise';
-import Layout from './components/Layout'
-// FUNCION
+import Layout from './components/Layout';
+import CommentState from './context/Comment/CommentState';
+
+// 2. FUNCIÓN
 function App() {
   return (
-    //Establece configuración de ruteo 
-    <BrowserRouter>
-    {/*Establece la lista de rutas */}
-    <Routes>
 
-      <Route path="/" element={ <Layout />} >
+    <>
+    <CommentState>
+      <BrowserRouter>
+      {/* Establecer la lista de rutas */}
+        <Routes>
+          {/* Establecer una ruta individual */}
+          {/* El atributo path significa la construcción de la URL */}
+          {/* El atributo element significa qué componente se va a leer */}
 
-        <Route path="/" element={ <Home />} />
-        <Route path="/ejercicio" element={ <Exercise />} />
+          <Route path="/" element={ <Layout /> }>
 
-      </Route>
+            {/* localhost:3000/ */}
+            <Route path="/" element={ <Home /> } />
+            {/* localhost:3000/ejercicio */}
+            <Route path="/ejercicio" element={ <Exercise /> } />
 
-    </Routes>
-    </BrowserRouter>
-  );
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+      </CommentState>
+    </>
+  )
+
 }
 
-//EXPORTACION
+// 3. EXPORTACIÓN
 export default App;
+
+
+
+
+
+
